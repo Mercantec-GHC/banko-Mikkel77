@@ -1,43 +1,82 @@
-﻿while (true)
+﻿int i = 1;
+//rember its a dictionary list 
+Dictionary<string, List<int>>iplate = new();
+iplate.Add("bankoplade1", new List<int>());
+while (true)
 {
-    Console.WriteLine("Skriv 15 tal fra pladen ind i format: første række og så den under og så den under, efter det skriv 'exit' for at afslutte indtastningen.");
+    Console.WriteLine("skriv 15 tal fra pladen ind i format: første række og så den under og så den under, efter det skriv exit til at indtaste numer");
     var bankoPlates = Console.ReadLine();
 
-    if (bankoPlates?.ToLower() == "exit")
-    {
-        Console.WriteLine("Plader gemt");
-        break;  // Exit the while loop if "exit" is typed
-    }
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
 
-    // Check the first 5, 10, and 15 numbers in the plate
-    for (int i = 1; i <= 15; i++)
+    //check de første 5 10 og 15 numre i banko
+    if (int.TryParse(bankoPlates, out int number))
     {
+        iplate["bankoplade1"].Add(number);
+
         if (i == 5)
         {
-            Console.WriteLine("Test");
+            Console.WriteLine("test");
+            Console.ReadLine();
+
         }
-        else if (i == 10)
+        else if (i == 9)
         {
-            Console.WriteLine("Test2");
+            Console.WriteLine("test2");
+            Console.ReadLine();
         }
-        else if (i == 15)
+        else if (i == 14)
         {
-            Console.WriteLine("Test3");
+            Console.WriteLine("test3");
+            Console.ReadLine();
         }
+        i++;
+
     }
+    else
+    {
+        Console.WriteLine("intast et gyldigt nummer");
+    }
+
+    Console.WriteLine("De indtastede numre for 'bankoplade1' er:");
+    foreach (var num in iplate["bankoplade1"])
+    {
+        Console.WriteLine(num);
+    }
+
+    //exit'es the plate adder
+    if (bankoPlates?.ToLower() == "exit")
+            {
+            Console.WriteLine("Plader gemt");
+            break;
+        }
+    #pragma warning restore CS8602 // Dereference of a possibly null reference.
 }
 
-    #pragma warning restore CS8602 // Dereference of a possibly null reference.
+Console.WriteLine("skriv det tal som bliver sagt");
+var navnetTal = Console.ReadLine();
 
-Console.WriteLine("skriv det tal som er bliver sagt");
-Console.ReadLine();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 /*
 // Creating a dictionary
-Dictionary<int, int> iplate = new Dictionary<int, int>();
+Dictionary<string, int> iplate = new Dictionary<string, int>();
 
 int userPlates;
 if (int.TryParse(iplate, out userPlates))
